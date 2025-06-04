@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Human Study</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; table-layout: fixed; }
+        td, th { border: 1px solid #ccc; padding: 10px; text-align: center; word-wrap: break-word; }
+        img { max-width: 256px; max-height: 256px; display: block; margin: auto; }
+        .score-btns button { margin: 4px; padding: 4px 8px;font-size: 20px; }
+        button {
+        font-size: 20px;
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+    }
+        th.prompt-col, td.prompt-col { width: 300px; }
+        th.prompt-zh-col, td.prompt-zh-col { width: 300px; }
+        th.index-col, td.index-col { width: 40px; }
+        .selected { background-color: #007bff; color: white; }
+    </style>
+</head>
+<body>
+<h1>Human Study</h1>
+<p>请比较者两个模型生成图片的质量 good(g): 代表第一个模型要比第二个模型好,so-so(s): 代表两个模型的效果相似, bad(b): 代表第一个模型要比第二个模型差 。</p>
+<p>Click a score (g,s,b) for two images. After completing, you can export results.</p>
+<p><strong>评分指南：</strong> g = good,s = so-so,b = bad</p>
+
+<table>
+
+
+<tr>
+    <th class="index-col">#</th>
+    <th class="prompt-col">Prompt</th>
+    <th class="prompt-zh-col">中文Prompt</th>
+    <th>Model A</th>
+    <th>Model B</th>
+    <th>Score</th>
+</tr>
+<tr><td>1</td><td>The scene depicts a bright green frog with a little squirrel happily eating a pine cone beside it. The frog’s skin is a vibrant green, and the squirrel is lively and adorable, with a fluffy tail. The background is a dense forest, with a shallow depth-of-field effect that blurs the background and keeps the focus on the foreground.</td><td>画面展示了一只翠绿色的青蛙，它身旁有一只小松鼠正在津津有味地吃着松果。青蛙的皮肤呈现出翠绿的色泽，小松鼠则活泼可爱，尾巴蓬松。背景是一片茂密的森林，背景采用虚化的浅景深特效，焦点为前景画面。</td>
+        <td><img src="firstblock_taylorseer0.14_300/12.png" width="1024"></td>
+        <td><img src="origin_300/12.png" width="1024"></td>
+        <td>
+            <div id="r0">
+                <button onclick="setScore('r0', 'g')">g</button>
+                <button onclick="setScore('r0', 's')">s</button>
+                <button onclick="setScore('r0', 'b')">b</button>
+            </div>
+        </td>
+    </tr>
+    <tr><td>2</td><td>The scene shows an extreme athlete riding a bike on molten lava. The athlete is dressed in specialized gear, riding confidently on a custom bike through the flowing lava. The background features barren volcanic landscapes with flowing lava, highlighting the athlete’s bravery and determination, adding dynamic energy and tension to the image.</td><td>画面展示了一个极限运动员在岩浆上骑自行车的场景。运动员身着专业装备，骑着一辆特制的自行车，在滚烫的岩浆上稳健地骑行。背景是荒芜的火山地貌，岩浆流淌，映衬着运动员的勇敢与决心，画面充满了动感与张力。</td>
+        <td><img src="firstblock_taylorseer0.14_300/57.png" width="1024"></td>
+        <td><img src="origin_300/57.png" width="1024"></td>
+        <td>
+            <div id="r1">
+                <button onclick="setScore('r1', 'g')">g</button>
+                <button onclick="setScore('r1', 's')">s</button>
+                <button onclick="setScore('r1', 'b')">b</button>
+            </div>
+        </td>
+    </tr>
+    <tr><td>3</td><td>The scene features the character Youmu Konpaku from *Touhou Project*, dressed in exquisite attire, with a delicate face and deep, penetrating eyes. The background is pure white, highlighting her mysterious elegance. The entire image is smooth and fine, with an ultra-large canvas showcasing every intricate detail, presenting a unique beauty.</td><td>画面展示了魂魄妖梦的形象，她身着精致的服饰，面容细腻，眼神深邃。背景是纯净的白色，突出了妖梦的神秘与优雅。整体画面光滑细腻，超大画幅展现了每一个细节的精致与考究，呈现出一种别样的美感。</td>
+        <td><img src="firstblock_taylorseer0.14_300/125.png" width="1024"></td>
+        <td><img src="origin_300/125.png" width="1024"></td>
+        <td>
+            <div id="r2">
+                <button onclick="setScore('r2', 'g')">g</button>
+                <button onclick="setScore('r2', 's')">s</button>
+                <button onclick="setScore('r2', 'b')">b</button>
+            </div>
+        </td>
+    </tr>
+    <tr><td>4</td><td>The scene displays a patch of creeping Jenny, its lush green leaves clustering together to create a lively, vibrant image. The background is a small path in the woods, with sunlight streaming through the trees and casting dappled shadows on the ground, evoking a peaceful and mysterious atmosphere. The background uses a blurred shallow depth-of-field effect, with the focus on the foreground.</td><td>画面展示了一丛窃衣。窃衣的枝叶繁茂，绿色的叶片簇拥在一起，形成一片生机勃勃的景象。背景是林间的小路，阳光透过树叶的缝隙洒在地面上，营造出一种宁静而神秘的氛围，背景采用虚化的浅景深特效，焦点为前景画面。</td>
+        <td><img src="firstblock_taylorseer0.14_300/140.png" width="1024"></td>
+        <td><img src="origin_300/140.png" width="1024"></td>
+        <td>
+            <div id="r3">
+                <button onclick="setScore('r3', 'g')">g</button>
+                <button onclick="setScore('r3', 's')">s</button>
+                <button onclick="setScore('r3', 'b')">b</button>
+            </div>
+        </td>
+    </tr>
+    <tr><td>5</td><td>The scene showcases a vintage American-style bedroom renovation. The room contains a wooden bed frame with a checkered bedspread, and a vintage lamp and alarm clock on the nightstand. The walls feature vintage artworks, adding an artistic touch. The overall style is retro and elegant, full of American charm.</td><td>画面展示了一间复古美式卧室的装修效果图。房间内摆放着一张木质床架，床上铺着格纹床单，床头摆放着复古台灯和闹钟。墙壁上挂着复古画作，增添了艺术气息。整体装修风格复古而典雅，充满了美式风格的韵味。</td>
+        <td><img src="firstblock_taylorseer0.14_300/327.png" width="1024"></td>
+        <td><img src="origin_300/327.png" width="1024"></td>
+        <td>
+            <div id="r4">
+                <button onclick="setScore('r4', 'g')">g</button>
+                <button onclick="setScore('r4', 's')">s</button>
+                <button onclick="setScore('r4', 'b')">b</button>
+            </div>
+        </td>
+    </tr>
+    </table>
+<div style="text-align: center; margin-top: 30px;">
+  <button onclick="handleSubmit()">✅ Submit</button>
+</div>
+
+<script>
+const TOTAL_SAMPLES = 5;
+const scores = {};
+
+function setScore(id, value) {
+    scores[id] = value;
+    const btns = document.getElementById(id).getElementsByTagName('button');
+    for (let btn of btns) {
+        btn.classList.remove('selected');
+        if (btn.textContent === value) {
+            btn.classList.add('selected');
+        }
+    }
+}
+
+function handleSubmit() {
+    for (let i = 0; i < TOTAL_SAMPLES; i++) {
+        const key = `r${i}`;
+        if (!(key in scores)) {
+            alert("Please score all rows before submitting. Missing score: Row " + (i + 1));
+            return;
+        }
+    }
+    downloadResults();
+}
+
+function downloadResults() {
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(scores, null, 2));
+    const dlAnchor = document.createElement('a');
+    dlAnchor.setAttribute("href", dataStr);
+    dlAnchor.setAttribute("download", "comparison_results.json");
+    document.body.appendChild(dlAnchor);
+    dlAnchor.click();
+    dlAnchor.remove();
+}
+</script>
+</body>
+</html>
