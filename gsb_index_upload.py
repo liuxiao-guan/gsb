@@ -3,23 +3,24 @@ import random
 from pathlib import Path
 
 # 配置
-RANDOM_SEED = 256  # ✅ 固定随机种子
+RANDOM_SEED = 238  # ✅ 固定随机种子
 NUM_SAMPLES = 50
+# 图片对应的prompt 和中文prompt
 PROMPT_FILE = "/root/paddlejob/workspace/env_run/gxl/paddle_speed/ppdiffusers/examples/taylorseer_flux/prompts/prompt.txt"
 PROMPT_ZH_FILE = "/root/paddlejob/workspace/env_run/gxl/paddle_speed/ppdiffusers/examples/taylorseer_flux/prompts/prompt_zh.txt"
 file_list =[
-    "date202506102048_step4_shift3__num100_gs3.5_seed42_h1024_w1024_bs1_sched-deterministic_cp-latest_ls-0.25_promptver-v1",
-    "date202506111424_step4_shift3__num100_gs3.5_seed42_h1024_w1024_bs1_sched-deterministic_cp-latest_ls-0.25_promptver-v1",
-    "date202506172108_step4_shift3__num100_gs3.5_seed42_h1024_w1024_bs1_sched-deterministic_cp-latest_ls-0.25_promptver-v1",
-    "date202506181652_step4_shift3__num100_gs3.5_seed42_h1024_w1024_bs1_sched-deterministic_cp-latest_ls-0.25_promptver-v1",
-    "date202506192039_step4_shift3__num100_gs3.5_seed42_h1024_w1024_bs1_sched-deterministic_cp-latest_ls-0.25_promptver-v1",
-    "date202506201725_step4_shift3__num100_gs3.5_seed42_h1024_w1024_bs1_sched-deterministic_cp-latest_ls-0.25_promptver-v1",
-    "date202506210928_step4_shift3__num100_gs3.5_seed42_h1024_w1024_bs1_sched-deterministic_cp-latest_ls-0.25_promptver-v1",
-    "date202506221613_step4_shift3__num100_gs3.5_seed42_h1024_w1024_bs1_sched-deterministic_cp-latest_ls-0.25_promptver-v1",
-    "date202506221639_step4_shift3__num100_gs3.5_seed42_h1024_w1024_bs1_sched-deterministic_cp-latest_ls-0.25_promptver-v1"
+    "firstblock_taylorseer0.07_300",
+    "sortedblock_nohook_300",
+    "teablockcache_300",
+    "taylorseer_N3_O3_300",
+    "teacache0.365_300",
+    # "date202506201725_step4_shift3__num100_gs3.5_seed42_h1024_w1024_bs1_sched-deterministic_cp-latest_ls-0.25_promptver-v1",
+    # "date202506210928_step4_shift3__num100_gs3.5_seed42_h1024_w1024_bs1_sched-deterministic_cp-latest_ls-0.25_promptver-v1",
+    # "date202506221613_step4_shift3__num100_gs3.5_seed42_h1024_w1024_bs1_sched-deterministic_cp-latest_ls-0.25_promptver-v1",
+    # "date202506221639_step4_shift3__num100_gs3.5_seed42_h1024_w1024_bs1_sched-deterministic_cp-latest_ls-0.25_promptver-v1"
     # "flux_schnell_1k"
     ]
-MODEL_DIRS = ["date202506102048_step4_shift3__num100_gs3.5_seed42_h1024_w1024_bs1_sched-deterministic_cp-latest_ls-0.25_promptver-v1","flux_schnell_300"]
+MODEL_DIRS = ["firstblock_taylorseer0.07_300","origin_300"]
 
 for index, file in enumerate(file_list):
     MODEL_DIRS[0] = file
@@ -66,7 +67,7 @@ for index, file in enumerate(file_list):
     </head>
     <body>
     <h1>Human Study</h1>
-    <p>请比较者两个模型生成图片的质量 good(g): 代表第一个模型要比第二个模型好,so-so(s): 代表两个模型的效果相似, bad(b): 代表第一个模型要比第二个模型差 。</p>
+    <p>请比较两个模型生成的图片 比较图片生成的质量和与文本的对齐度 good(g): 代表第一个模型要比第二个模型好,so-so(s): 代表两个模型的效果相似, bad(b): 代表第一个模型要比第二个模型差 。</p>
     <p>Click a score (g,s,b) for two images. After completing, you can export results.</p>
     <p><strong>评分指南：</strong> g = good,s = so-so,b = bad</p>
 
@@ -115,7 +116,7 @@ for index, file in enumerate(file_list):
     html += """
     <div style="text-align: center; margin-top: 30px;">
     <label for="userInput"><strong>请输入你的用户名：</strong></label>
-    <input type="text" id="userInput" placeholder="比如:gxl" style="padding: 5px; font-size: 16px;" />
+    <input type="text" id="userInput" placeholder="比如:lixiaoming" style="padding: 5px; font-size: 16px;" />
     </div>
     <div style="text-align: center; margin-top: 30px;">
     <button onclick="handleSubmit()">✅ Submit</button>
@@ -171,7 +172,7 @@ for index, file in enumerate(file_list):
             scores: scores                 // 打分数据
         };
 
-        fetch("http://10.174.147.78:8081/upload", {
+        fetch("http://10.95.246.78:8081/upload", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

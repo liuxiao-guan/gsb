@@ -4,7 +4,7 @@ from collections import Counter
 import matplotlib.pyplot as plt
 
 # 修改为你自己的根目录路径
-root_dir = "/root/paddlejob/workspace/env_run/output/gxl/comparion_json"
+root_dir = "/root/paddlejob/workspace/env_run/gxl/output/PaddleMIX/inf_speed_bf16/gsb_results"
 
 # 图像保存目录
 output_dir = os.path.join(root_dir, "bar_charts")

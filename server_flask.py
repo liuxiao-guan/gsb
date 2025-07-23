@@ -7,7 +7,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-UPLOAD_FOLDER = "/root/paddlejob/workspace/env_run/output/gxl/comparion_json"
+UPLOAD_FOLDER = "/root/paddlejob/workspace/env_run/gxl/output/PaddleMIX/inf_speed_bf16/gsb_results"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route('/upload', methods=['POST'])
